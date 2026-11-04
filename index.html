@@ -417,6 +417,158 @@ body.dark-theme .about-form-card p{color:#c0b7c9}
 body.dark-theme .about-modal-head{background:#24212a;color:#f4eff8;border-color:#494150}
 @media(max-width:700px){.about-action-hub{padding:0 14px}.about-form-grid{grid-template-columns:1fr}.about-form-card{min-height:0;padding:17px}.about-modal{padding:0}.about-modal-panel{height:100vh;border-radius:0}.about-modal iframe{height:calc(100vh - 52px)}}
 </style>
+
+<style id="ajab-mobile-layout-repair-2026">
+/* Targeted mobile repair: keeps the desktop design and existing features intact. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width:100%; max-width:100%; overflow-x:hidden; }
+img, svg, iframe, video { max-width:100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+/* Social links: never squeeze four cards into one narrow phone row. */
+.social-section { min-width:0; }
+.social-grid {
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+.social-card {
+  min-width:0 !important;
+  max-width:100% !important;
+  overflow:hidden !important;
+  box-shadow:0 8px 22px rgba(79,48,119,.13) !important;
+}
+.social-copy { min-width:0 !important; flex:1 1 auto !important; }
+.social-copy b, .social-copy small {
+  display:block;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.social-icon { flex:0 0 43px !important; }
+
+/* Consistent visible shadows on touch devices, where hover does not exist. */
+.category, .card, .product-card, .offer-card, .occasion-pill,
+.about-form-card, .about-form-open, .social-card, .filter, .opt,
+.viewbtn, .btn, .signage-types a, .signage-cta, .campaign-cta,
+.location-map-btn, .location-site-btn {
+  box-shadow:0 5px 16px rgba(25,20,10,.09);
+}
+.category:active, .card:active, .product-card:active, .offer-card:active,
+.occasion-pill:active, .about-form-open:active, .social-card:active,
+.filter:active, .opt:active, .viewbtn:active, .btn:active,
+.signage-types a:active, .signage-cta:active, .campaign-cta:active {
+  transform:translateY(1px) scale(.99);
+  box-shadow:0 2px 8px rgba(25,20,10,.14) !important;
+}
+@media (hover:hover) {
+  .category:hover, .card:hover, .product-card:hover, .offer-card:hover,
+  .occasion-pill:hover, .about-form-card:hover, .about-form-open:hover,
+  .social-card:hover, .filter:hover, .opt:hover, .viewbtn:hover,
+  .btn:hover, .signage-types a:hover, .signage-cta:hover,
+  .campaign-cta:hover, .location-map-btn:hover, .location-site-btn:hover {
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(25,20,10,.14);
+  }
+}
+
+@media (max-width:650px) {
+  .social-section {
+    width:calc(100% - 28px) !important;
+    max-width:none !important;
+    margin:24px 14px 30px !important;
+    padding:22px 13px 18px !important;
+  }
+  .social-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:11px !important;
+    align-items:stretch;
+  }
+  .social-card {
+    min-height:142px !important;
+    padding:14px 9px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:9px !important;
+    text-align:center !important;
+    border-radius:17px !important;
+    box-shadow:0 7px 18px rgba(79,48,119,.14) !important;
+    backdrop-filter:none !important;
+  }
+  .social-icon { width:46px !important; height:46px !important; flex:0 0 46px !important; }
+  .social-copy { width:100% !important; flex:none !important; }
+  .social-copy b { font-size:13px !important; line-height:1.25 !important; }
+  .social-copy small { font-size:11px !important; line-height:1.35 !important; }
+  .social-arrow { display:none !important; }
+
+  /* One compact floating WhatsApp control; remove pulsing rings that look duplicated. */
+  .floatwa {
+    position:fixed !important;
+    right:12px !important;
+    bottom:calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index:1000 !important;
+    max-width:calc(100vw - 24px) !important;
+    padding:11px 15px !important;
+    border:0 !important;
+    border-radius:999px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    font-size:13px !important;
+    line-height:1.2 !important;
+    white-space:nowrap !important;
+    animation:none !important;
+    transform:none !important;
+    box-shadow:0 5px 16px rgba(10,120,65,.28), 0 0 0 2px rgba(37,211,102,.12) !important;
+  }
+  .floatwa:after { display:none !important; }
+  .floatwa svg { width:22px !important; height:22px !important; }
+
+  /* Keep the enquiry panel within the visible iPhone screen and scroll its contents. */
+  .wa-panel {
+    position:fixed !important;
+    left:12px !important;
+    right:12px !important;
+    bottom:calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+    width:auto !important;
+    max-width:none !important;
+    max-height:calc(100dvh - 150px - env(safe-area-inset-top, 0px)) !important;
+    overflow-y:auto !important;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    z-index:1001 !important;
+    border-radius:18px !important;
+    box-shadow:0 14px 38px rgba(20,35,25,.24) !important;
+  }
+  .wa-panel form { min-width:0; }
+  .wa-panel input, .wa-panel select, .wa-panel textarea {
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    font-size:16px !important; /* prevents iOS Safari auto-zoom */
+  }
+  .wa-panel textarea { min-height:100px; }
+  .wa-panel-head { position:sticky; top:0; z-index:2; }
+}
+
+@media (max-width:380px) {
+  .social-grid { grid-template-columns:minmax(0,1fr) !important; }
+  .social-card { min-height:94px !important; flex-direction:row !important; text-align:left !important; justify-content:flex-start !important; padding:13px !important; }
+  .social-copy { text-align:left !important; }
+  .social-arrow { display:block !important; }
+  .brand small { letter-spacing:.7px; }
+}
+
+/* Keep focus/keyboard interaction visible even without hover. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline:2px solid #e2b900 !important;
+  outline-offset:3px !important;
+}
+</style>
+
 </head>
 <body>
 <div class="announcement ajab-brand-strip"><span class="brand-gift-icon" aria-hidden="true">🎁</span><span>গিফট মানেই <strong>AJAB BAZAAR</strong></span><span class="brand-gift-icon" aria-hidden="true">🎁</span></div>
@@ -425,7 +577,11 @@ body.dark-theme .about-modal-head{background:#24212a;color:#f4eff8;border-color:
 <div class="navlinks" id="navlinks">
 <a data-route="home" href="#home">Home</a><a data-route="gift-zone" href="#gift-zone">Gift Zone</a><a data-route="sign-board" href="#sign-board">Sign Board</a><a data-route="customize-gift" href="#customize-gift">Customize Gift</a><a data-route="about" href="#about">About Us</a><a data-route="lovebloom" href="#lovebloom">💗 LoveBloom</a>
 </div>
-<div class="navright"><button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button><input aria-label="Search products" class="search" id="search" placeholder="Search products..."/><button aria-label="Open menu" class="menu" id="menu">☰</button></div>
+<div class="navright">
+<button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button>
+<div class="mobile-search-wrap"><button type="button" class="mobile-search-toggle" id="mobileSearchToggle" aria-label="Open product search" aria-expanded="false">⌕</button><input aria-label="Search products" class="search" id="search" placeholder="Search products..."/></div>
+<button aria-label="Open menu" class="menu" id="menu">☰</button>
+</div>
 </nav></header>
 <!-- HOME PAGE: marketplace-style storefront -->
 <section class="page active" id="page-home">
@@ -1031,6 +1187,387 @@ I am contacting you from the AJAB BAZAAR website.`;window.open('https://wa.me/91
  window.addEventListener('popstate',()=>{if(location.hash==='#about')route();});
 })();
 </script>
+
+
+<style id="ajab-mobile-header-rebuild-2026">
+/* Rebuild the phone header as a compact, balanced toolbar. Desktop stays unchanged. */
+.nav, .nav * { min-width:0; }
+.brand-logo { overflow:hidden; flex:0 0 auto; }
+.brand-logo img { display:block; width:100%; height:100%; max-width:100%; object-fit:contain; }
+.mobile-search-wrap { display:flex; align-items:center; gap:0; }
+.mobile-search-toggle {
+  display:none; width:40px; height:40px; flex:0 0 40px;
+  border:1px solid var(--line); border-radius:50%; background:#fff;
+  color:#2d292e; font-size:25px; line-height:1; align-items:center; justify-content:center;
+  box-shadow:0 3px 10px rgba(35,25,10,.08);
+}
+@media(max-width:650px) {
+  header { overflow:visible; }
+  .nav {
+    width:100%; max-width:100%; min-height:68px;
+    padding:9px 12px !important; gap:8px !important;
+    display:flex !important; align-items:center !important; justify-content:space-between !important;
+  }
+  .brand {
+    flex:1 1 auto !important; width:auto !important; max-width:calc(100% - 150px);
+    min-width:0 !important; gap:8px !important; overflow:hidden;
+  }
+  .brand-logo {
+    width:43px !important; height:43px !important; flex:0 0 43px !important;
+    border-radius:50% !important;
+  }
+  .brand-logo img { width:100% !important; height:100% !important; object-fit:contain !important; }
+  .brand > span:last-child { min-width:0 !important; overflow:hidden; }
+  .brand b {
+    display:block; font-size:clamp(11px,3.2vw,14px) !important;
+    line-height:1.15; white-space:nowrap; letter-spacing:.15px !important;
+  }
+  .brand small {
+    font-size:7px !important; letter-spacing:1px !important;
+    white-space:nowrap; line-height:1.2;
+  }
+  .navlinks { top:100% !important; left:0 !important; right:0 !important; }
+  .navright {
+    flex:0 0 auto !important; width:auto !important; min-width:0 !important;
+    display:flex !important; align-items:center !important; justify-content:flex-end !important;
+    gap:6px !important;
+  }
+  /* Dark-mode text pill becomes a small moon/sun icon. */
+  .theme-toggle {
+    width:39px !important; height:39px !important; flex:0 0 39px !important;
+    padding:0 !important; border-radius:50% !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    gap:0 !important; box-shadow:0 3px 10px rgba(35,25,10,.08) !important;
+  }
+  .theme-toggle-icon { font-size:19px !important; line-height:1 !important; }
+  .theme-toggle-label { display:none !important; }
+  /* Search is an icon until tapped; then it expands as a row below the toolbar. */
+  .mobile-search-wrap { position:static !important; flex:0 0 39px; }
+  .mobile-search-toggle { display:flex !important; width:39px; height:39px; flex-basis:39px; }
+  .search {
+    display:none !important; position:absolute !important;
+    top:calc(100% + 7px) !important; left:12px !important; right:12px !important;
+    width:calc(100% - 24px) !important; max-width:none !important; height:44px !important;
+    padding:0 15px !important; background:#fff !important; color:#242126 !important;
+    border:1px solid #eadfca !important; border-radius:13px !important;
+    box-shadow:0 10px 26px rgba(25,20,10,.16) !important;
+    z-index:65 !important; font-size:16px !important;
+  }
+  .nav.search-open .search { display:block !important; }
+  .menu {
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    width:39px !important; height:39px !important; flex:0 0 39px !important;
+    padding:0 !important; border:1px solid var(--line) !important;
+    border-radius:50% !important; background:#fff !important;
+    font-size:22px !important; line-height:1 !important;
+    box-shadow:0 3px 10px rgba(35,25,10,.08) !important;
+  }
+  .menu:active, .theme-toggle:active, .mobile-search-toggle:active {
+    transform:scale(.96); box-shadow:0 1px 5px rgba(25,20,10,.16) !important;
+  }
+}
+@media(max-width:360px) {
+  .nav { padding-left:9px !important; padding-right:9px !important; gap:5px !important; }
+  .brand { max-width:calc(100% - 137px); gap:6px !important; }
+  .brand-logo { width:38px !important; height:38px !important; flex-basis:38px !important; }
+  .brand b { font-size:11px !important; }
+  .brand small { font-size:6px !important; letter-spacing:.7px !important; }
+  .navright { gap:4px !important; }
+  .theme-toggle,.mobile-search-toggle,.menu { width:36px !important;height:36px !important;flex-basis:36px !important; }
+  .mobile-search-wrap { flex-basis:36px; }
+}
+/* Prevent long content and page sections from pushing beyond the phone viewport. */
+@media(max-width:650px) {
+  body, main, .page { max-width:100%; overflow-x:clip; }
+  .wrap, .market-section, .ajab-extra-section, .campaign-wrap, .location-section {
+    width:100%; max-width:100%; min-width:0;
+  }
+  .about-grid, .detail-layout, .footer-in, .market-bottom-cta,
+  .location-card, .social-grid, .about-form-grid {
+    min-width:0; max-width:100%;
+  }
+  .market-bottom-cta, .promo, .campaign-banner, .location-actions {
+    flex-wrap:wrap; min-width:0;
+  }
+  .market-bottom-cta > a, .campaign-cta, .location-map-btn, .location-site-btn {
+    max-width:100%; white-space:normal; overflow-wrap:anywhere;
+  }
+}
+</style>
+<script id="ajab-mobile-search-toggle-script">
+(function(){
+  const nav=document.querySelector('header .nav');
+  const toggle=document.getElementById('mobileSearchToggle');
+  const input=document.getElementById('search');
+  if(!nav||!toggle||!input)return;
+  toggle.addEventListener('click',function(){
+    const open=nav.classList.toggle('search-open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'Close product search':'Open product search');
+    toggle.textContent=open?'×':'⌕';
+    if(open){setTimeout(()=>input.focus(),60);}
+    else {input.blur();}
+  });
+  document.addEventListener('click',function(e){
+    if(!nav.contains(e.target) && !input.contains(e.target)){
+      nav.classList.remove('search-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.setAttribute('aria-label','Open product search');
+      toggle.textContent='⌕';
+    }
+  });
+})();
+</script>
+
+
+<style id="ajab-mobile-final-refinements">
+/* Mobile-only refinement pass. Desktop styling is deliberately untouched. */
+@media (max-width: 650px) {
+  /* Header: keep the circular logo truly circular and hide the wordmark/tagline. */
+  header .brand {
+    flex: 0 0 48px !important;
+    width: 48px !important;
+    max-width: 48px !important;
+    min-width: 48px !important;
+    overflow: visible !important;
+    gap: 0 !important;
+  }
+  header .brand > span:last-child { display:none !important; }
+  header .brand-icon {
+    display:block !important;
+    width:46px !important;
+    height:46px !important;
+    min-width:46px !important;
+    max-width:46px !important;
+    flex:0 0 46px !important;
+    aspect-ratio:1 / 1 !important;
+    border-radius:50% !important;
+    overflow:hidden !important;
+  }
+  header .brand-icon img {
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    border-radius:50% !important;
+  }
+  header .nav {
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    gap:8px !important;
+    padding:9px 12px !important;
+    min-height:66px !important;
+  }
+  header .navright {
+    display:flex !important;
+    flex:1 1 auto !important;
+    min-width:0 !important;
+    justify-content:flex-end !important;
+    align-items:center !important;
+    gap:8px !important;
+  }
+  header .theme-toggle,
+  header .mobile-search-toggle,
+  header .menu {
+    width:39px !important;
+    height:39px !important;
+    min-width:39px !important;
+    flex:0 0 39px !important;
+    padding:0 !important;
+    border-radius:50% !important;
+  }
+  header .theme-toggle-label { display:none !important; }
+  header .mobile-search-wrap { flex:0 0 39px !important; width:39px !important; }
+  header .mobile-search-toggle { display:flex !important; }
+  header .search { max-width:none !important; }
+
+  /* Offer cards: stack all three as full-width rows, not three squeezed columns. */
+  .offer-zone .offer-grid {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    grid-auto-flow:row !important;
+    gap:12px !important;
+    width:100% !important;
+  }
+  .offer-zone .offer-card {
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    min-height:132px !important;
+    padding:17px 18px !important;
+    border-radius:17px !important;
+  }
+  .offer-zone .offer-card h3 { max-width:calc(100% - 48px) !important; }
+  .offer-zone .offer-card p { max-width:calc(100% - 12px) !important; }
+
+  /* Both social blocks (home and About) use a neat 2 x 2 phone grid. */
+  .social-section .social-grid {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-auto-flow:row !important;
+    gap:10px !important;
+    width:100% !important;
+  }
+  .social-section .social-card {
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    gap:8px !important;
+    width:100% !important;
+    min-width:0 !important;
+    min-height:126px !important;
+    padding:12px 8px !important;
+    overflow:hidden !important;
+    border-radius:16px !important;
+  }
+  .social-section .social-icon {
+    width:42px !important;
+    height:42px !important;
+    flex:0 0 42px !important;
+  }
+  .social-section .social-copy {
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    text-align:center !important;
+  }
+  .social-section .social-copy b {
+    display:block !important;
+    font-size:13px !important;
+    line-height:1.25 !important;
+    overflow-wrap:anywhere !important;
+  }
+  .social-section .social-copy small {
+    display:block !important;
+    font-size:10px !important;
+    line-height:1.3 !important;
+    overflow-wrap:anywhere !important;
+  }
+  .social-section .social-arrow { display:none !important; }
+
+  /* Touch screens do not have hover: give clickable items persistent depth. */
+  .offer-card, .social-card, .category, .product-card, .occasion-pill,
+  .btn, .viewbtn, .opt, .filter, .navlinks a, .theme-toggle,
+  .mobile-search-toggle, .menu, .floatwa, .whatsapp,
+  .location-map-btn, .location-site-btn, .about-form-open,
+  .signage-types a, .signage-cta, .campaign-cta {
+    box-shadow:0 5px 16px rgba(30,24,12,.13) !important;
+    -webkit-box-shadow:0 5px 16px rgba(30,24,12,.13) !important;
+  }
+  .offer-card:active, .social-card:active, .category:active,
+  .product-card:active, .occasion-pill:active, .btn:active,
+  .viewbtn:active, .opt:active, .filter:active, .floatwa:active,
+  .whatsapp:active, .location-map-btn:active, .location-site-btn:active {
+    box-shadow:0 2px 7px rgba(30,24,12,.2) !important;
+    -webkit-box-shadow:0 2px 7px rgba(30,24,12,.2) !important;
+    transform:translateY(1px) scale(.99);
+  }
+}
+@media (max-width:380px) {
+  .social-section .social-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  .social-section .social-card { min-height:118px !important; }
+  header .brand, header .brand-icon {
+    width:42px !important; min-width:42px !important; max-width:42px !important;
+    height:42px !important; flex-basis:42px !important;
+  }
+  header .nav { padding-left:9px !important; padding-right:9px !important; gap:5px !important; }
+  header .navright { gap:5px !important; }
+}
+</style>
+
+
+<style id="ajab-mobile-brand-gap-fix">
+/* Restore the AJAB BAZAAR wordmark in the space beside the round logo. */
+@media (max-width:650px) {
+  header .nav {
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:7px !important;
+    padding-left:10px !important;
+    padding-right:10px !important;
+  }
+  header .brand {
+    display:flex !important;
+    flex:1 1 auto !important;
+    width:auto !important;
+    max-width:none !important;
+    min-width:0 !important;
+    gap:7px !important;
+    overflow:hidden !important;
+  }
+  header .brand > span:last-child {
+    display:block !important;
+    flex:1 1 auto !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    overflow:hidden !important;
+  }
+  header .brand b {
+    display:block !important;
+    font-size:clamp(10px, 3.25vw, 13px) !important;
+    line-height:1.15 !important;
+    letter-spacing:.25px !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+  }
+  header .brand small {
+    display:block !important;
+    margin-top:3px !important;
+    font-size:clamp(6px, 1.9vw, 8px) !important;
+    line-height:1.15 !important;
+    letter-spacing:clamp(.35px, .3vw, .8px) !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+  }
+  header .brand-icon.brand-logo {
+    display:block !important;
+    flex:0 0 42px !important;
+    width:42px !important;
+    min-width:42px !important;
+    max-width:42px !important;
+    height:42px !important;
+    aspect-ratio:1 / 1 !important;
+    border-radius:50% !important;
+    overflow:hidden !important;
+  }
+  header .brand-icon.brand-logo img {
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    border-radius:50% !important;
+  }
+  header .navright {
+    flex:0 0 auto !important;
+    gap:5px !important;
+  }
+}
+@media (max-width:380px) {
+  header .nav { gap:5px !important; padding-left:8px !important; padding-right:8px !important; }
+  header .brand { gap:5px !important; }
+  header .brand-icon.brand-logo {
+    flex-basis:38px !important; width:38px !important;
+    min-width:38px !important; max-width:38px !important; height:38px !important;
+  }
+  header .brand b { font-size:10px !important; }
+  header .brand small { font-size:6px !important; letter-spacing:.25px !important; }
+  header .navright { gap:4px !important; }
+  header .theme-toggle, header .mobile-search-toggle, header .menu {
+    width:35px !important; height:35px !important; min-width:35px !important;
+    flex-basis:35px !important;
+  }
+  header .mobile-search-wrap { width:35px !important; flex-basis:35px !important; }
+}
+</style>
 
 </body></html>
 <style id="ajab-offer-reference-theme">
